@@ -57,16 +57,16 @@ externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/Rebilly/generator-openapi-repo'
 tags:
-  - name: pet
-    description: Everything about your Pets
+  - name: investor
+    description: Everything about your Investors
   - name: store
     description: Access to Csddev orders
   - name: user
     description: Operations about user
-  - name: pet_model
-    x-displayName: The Pet Model
+  - name: investor_model
+    x-displayName: The Investor Model
     description: |
-      <SchemaDefinition schemaRef="#/components/schemas/Pet" />
+      <SchemaDefinition schemaRef="#/components/schemas/Investor" />
   - name: store_model
     x-displayName: The Order Model
     description: |
@@ -74,17 +74,17 @@ tags:
 x-tagGroups:
   - name: General
     tags:
-      - pet
+      - investor
       - store
   - name: User Management
     tags:
-      - user
+      - investor
   - name: Models
     tags:
-      - pet_model
+      - investor_model
       - store_model
 paths:
-  /pet:
+  /investor:
     parameters:
       - name: Accept-Language
         in: header
@@ -103,26 +103,26 @@ paths:
           format: int64
     post:
       tags:
-        - pet
-      summary: Add a new pet to the store
-      description: Add new pet to the store inventory.
+        - investor
+      summary: Add a new investor to the store
+      description: Add new investor to the store inventory.
       operationId: addPet
       responses:
         '405':
           description: Invalid input
       security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
+        - investorstore_auth:
+            - 'write:investor'
+            - 'read:investor'
       x-codeSamples:
         - lang: 'C#'
           source: |
-            Csddev.v1.Pet pet = new Csddev.v1.Pet();
-            pet.setApiKey("your api key");
-            pet.petType = Csddev.v1.Pet.TYPE_DOG;
-            pet.name = "Rex";
+            Csddev.v1.Pet investor = new Csddev.v1.Pet();
+            investor.setApiKey("your api key");
+            investor.investorType = Csddev.v1.Pet.TYPE_DOG;
+            investor.name = "Rex";
             // set other fields
-            CsddevResponse response = pet.create();
+            CsddevResponse response = investor.create();
             if (response.statusCode == HttpStatusCode.Created)
             {
               // Successfully created
@@ -139,7 +139,7 @@ paths:
             $form->setName("Rex");
             // set other fields
             try {
-                $pet = $client->pets()->create($form);
+                $investor = $client->investors()->create($form);
             } catch (UnprocessableEntityException $e) {
                 var_dump($e->getErrors());
             }
@@ -147,8 +147,8 @@ paths:
         $ref: '#/components/requestBodies/Pet'
     put:
       tags:
-        - pet
-      summary: Update an existing pet
+        - investor
+      summary: Update an existing investor
       description: ''
       operationId: updatePet
       responses:
@@ -159,9 +159,9 @@ paths:
         '405':
           description: Validation exception
       security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
+        - investorstore_auth:
+            - 'write:investor'
+            - 'read:investor'
       x-codeSamples:
         - lang: PHP
           source: |
@@ -171,23 +171,23 @@ paths:
             $form->setName("Rex");
             // set other fields
             try {
-                $pet = $client->pets()->update($form);
+                $investor = $client->investor()->update($form);
             } catch (UnprocessableEntityException $e) {
                 var_dump($e->getErrors());
             }
       requestBody:
         $ref: '#/components/requestBodies/Pet'
-  '/pet/{petId}':
+  '/investor/{investorId}':
     get:
       tags:
-        - pet
-      summary: Find pet by ID
-      description: Returns a single pet
+        - investor
+      summary: Find investor by ID
+      description: Returns a single investor
       operationId: getPetById
       parameters:
-        - name: petId
+        - name: investorId
           in: path
-          description: ID of pet to return
+          description: ID of investor to return
           required: true
           deprecated: true
           schema:
@@ -211,14 +211,14 @@ paths:
         - api_key: []
     post:
       tags:
-        - pet
-      summary: Updates a pet in the store with form data
+        - investor
+      summary: Updates a investor in the store with form data
       description: ''
       operationId: updatePetWithForm
       parameters:
-        - name: petId
+        - name: investorId
           in: path
-          description: ID of pet that needs to be updated
+          description: ID of investor that needs to be updated
           required: true
           schema:
             type: integer
@@ -227,9 +227,9 @@ paths:
         '405':
           description: Invalid input
       security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
+        - investorstore_auth:
+            - 'write:investor'
+            - 'read:investor'
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -237,15 +237,15 @@ paths:
               type: object
               properties:
                 name:
-                  description: Updated name of the pet
+                  description: Updated name of the investor
                   type: string
                 status:
-                  description: Updated status of the pet
+                  description: Updated status of the investor
                   type: string
     delete:
       tags:
-        - pet
-      summary: Deletes a pet
+        - investor
+      summary: Deletes a investor
       description: ''
       operationId: deletePet
       parameters:
@@ -255,7 +255,7 @@ paths:
           schema:
             type: string
           example: "Bearer <TOKEN>"
-        - name: petId
+        - name: investorId
           in: path
           description: Pet id to delete
           required: true
@@ -264,22 +264,22 @@ paths:
             format: int64
       responses:
         '400':
-          description: Invalid pet value
+          description: Invalid investor value
       security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
-  '/pet/{petId}/uploadImage':
+        - investorstore_auth:
+            - 'write:investor'
+            - 'read:investor'
+  '/investor/{investorId}/uploadImage':
     post:
       tags:
-        - pet
+        - investor
       summary: uploads an image
       description: ''
       operationId: uploadFile
       parameters:
-        - name: petId
+        - name: investorId
           in: path
-          description: ID of pet to update
+          description: ID of investor to update
           required: true
           schema:
             type: integer
@@ -292,19 +292,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
       security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
+        - investorstore_auth:
+            - 'write:investor'
+            - 'read:investor'
       requestBody:
         content:
           application/octet-stream:
             schema:
               type: string
               format: binary
-  /pet/findByStatus:
+  /investor/findByStatus:
     get:
       tags:
-        - pet
+        - investor
       summary: Finds Pets by status
       description: Multiple status values can be provided with comma separated strings
       operationId: findPetsByStatus
@@ -342,18 +342,18 @@ paths:
         '400':
           description: Invalid status value
       security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
-  /pet/findByTags:
+        - investorstore_auth:
+            - 'write:investor'
+            - 'read:investor'
+  /investor/findByTags:
     get:
       tags:
-        - pet
-      summary: Finds Pets by tags
+        - investor
+      summary: Finds investor by tags
       description: >-
         Multiple tags can be provided with comma separated strings. Use tag1,
         tag2, tag3 for testing.
-      operationId: findPetsByTags
+      operationId: findinvestorByTags
       deprecated: true
       parameters:
         - name: tags
@@ -382,14 +382,14 @@ paths:
         '400':
           description: Invalid tag value
       security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
+        - investorstore_auth:
+            - 'write:investor'
+            - 'read:investor'
   /store/inventory:
     get:
       tags:
         - store
-      summary: Returns pet inventories by status
+      summary: Returns investor inventories by status
       description: Returns a map of status codes to quantities
       operationId: getInventory
       responses:
@@ -408,7 +408,7 @@ paths:
     post:
       tags:
         - store
-      summary: Place an order for a pet
+      summary: Place an order for a investor
       description: ''
       operationId: placeOrder
       responses:
@@ -433,7 +433,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Order'
-        description: order placed for purchasing the pet
+        description: order placed for purchasing the investor
         required: true
   '/store/order/{orderId}':
     get:
@@ -447,7 +447,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: ID of pet that needs to be fetched
+          description: ID of investor that needs to be fetched
           required: true
           schema:
             type: integer
