@@ -48,7 +48,7 @@ info:
     email: apiteam@swagger.io
     url: https://github.com/Redocly/redoc
   x-logo:
-    url: 'https://csddev.sudrania.com/thempetstorees/csdgull/images/Common_Sub_Doc_Logo.svg'
+    url: 'https://github.com/WebSpider-World/OpenAPI/blob/main/Common_Sub_Doc_Logo.png'
     altText: CSD logo
   license:
     name: Apache 2.0
