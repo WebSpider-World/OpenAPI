@@ -1,26 +1,26 @@
 openapi: 3.0.0
 servers:
-  - url: //petstore.swagger.io/v2
+  - url: //csddev.swagger.io/v2
     description: Default server
   - url: //petstore.swagger.io/sandbox
     description: Sandbox server
 info:
   description: |
-    This is a sample server Petstore server.
+    This is a sample server CSDDEV server.
     You can find out more about Swagger at
     [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).
     For this sample, you can use the api key `special-key` to test the authorization filters.
 
     # Introduction
     This API is documented in **OpenAPI format** and is based on
-    [Petstore sample](http://petstore.swagger.io/) provided by [swagger.io](http://swagger.io) team.
+    [Petstore sample](http://csddev.swagger.io/) provided by [swagger.io](http://swagger.io) team.
     It was **extended** to illustrate features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo)
     tool and [ReDoc](https://github.com/Redocly/redoc) documentation. In addition to standard
     OpenAPI syntax we use a few [vendor extensions](https://github.com/Redocly/redoc/blob/master/docs/redoc-vendor-extensions.md).
 
     # OpenAPI Specification
     This API is documented in **OpenAPI format** and is based on
-    [Petstore sample](http://petstore.swagger.io/) provided by [swagger.io](http://swagger.io) team.
+    [csddev sample](http://csddev.swagger.io/) provided by [swagger.io](http://swagger.io) team.
     It was **extended** to illustrate features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo)
     tool and [ReDoc](https://github.com/Redocly/redoc) documentation. In addition to standard
     OpenAPI syntax we use a few [vendor extensions](https://github.com/Redocly/redoc/blob/master/docs/redoc-vendor-extensions.md).
@@ -57,34 +57,26 @@ externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/Rebilly/generator-openapi-repo'
 tags:
-  - name: pet
-    description: Everything about your Pets
+  - name: csddev
+    description: Everything about your Csddev
   - name: store
-    description: Access to Petstore orders
+    description: Access to csddev orders
   - name: user
     description: Operations about user
-  - name: pet_model
-    x-displayName: The Pet Model
+  - name: csddev_model
+    x-displayName: The Csddev Model
     description: |
       <SchemaDefinition schemaRef="#/components/schemas/Pet" />
-  - name: store_model
-    x-displayName: The Order Model
-    description: |
-      <SchemaDefinition schemaRef="#/components/schemas/Order" exampleRef="#/components/examples/Order" showReadOnly={true} showWriteOnly={true} />
 x-tagGroups:
   - name: General
     tags:
-      - pet
-      - store
-  - name: User Management
-    tags:
-      - user
+      - csd
+      - Investor
   - name: Models
     tags:
-      - pet_model
-      - store_model
+      - investor_model
 paths:
-  /pet:
+  /csddev:
     parameters:
       - name: Accept-Language
         in: header
@@ -103,21 +95,20 @@ paths:
           format: int64
     post:
       tags:
-        - pet
-      summary: Add a new pet to the store
-      description: Add new pet to the store inventory.
-      operationId: addPet
+        - csddev
+      summary: Add a new investor to the csddev
+      description: Add new investor to the csddev.
+      operationId: addInvestor
       responses:
         '405':
           description: Invalid input
       security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
+        - csddevstore_auth:
+            - 'write:investors'
+            - 'read:investors'
       x-codeSamples:
         - lang: 'C#'
           source: |
-            PetStore.v1.Pet pet = new PetStore.v1.Pet();
             pet.setApiKey("your api key");
             pet.petType = PetStore.v1.Pet.TYPE_DOG;
             pet.name = "Rex";
