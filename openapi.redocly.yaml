@@ -41,15 +41,15 @@ info:
     <SecurityDefinitions />
 
   version: 1.0.0
-  title: Swagger Petstore
+  title: Swagger CSDAPI
   termsOfService: 'http://swagger.io/terms/'
   contact:
     name: API Support
     email: apiteam@swagger.io
     url: https://github.com/Redocly/redoc
   x-logo:
-    url: 'https://redocly.github.io/redoc/petstore-logo.png'
-    altText: Petstore logo
+    url: 'https://csddev.sudrania.com/thempetstorees/csdgull/images/Common_Sub_Doc_Logo.svg'
+    altText: CSD logo
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
